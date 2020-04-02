@@ -60,25 +60,67 @@ const people = [
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
 
+const isBornInFifteen = inventors.filter(inventor => {
+  if (inventor.year > 1500 && inventor.year < 1600) {
+    return true;
+  }
+});
+// console.log(isBornInFifteen);
+
 // Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
+
+const firstAndLastName = inventors.map(
+  inventor => `${inventor.first} ${inventor.last}`
+);
+// console.log(firstAndLastName);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 
+const sortByBirthdate = inventors.sort((inventorA, inventorB) => {
+  return inventorB.year - inventorA.year;
+});
+// console.log(sortByBirthdate);
+
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
 
+const totalYears = inventors.reduce(
+  (total, inventor) => total + (inventor.passed - inventor.year),
+  0
+);
+// console.log(totalYears);
+
 // 5. Sort the inventors by years lived
+const howMuchLived = inventors.sort((inventorA, inventorB) => {
+  return (
+    inventorA.passed - inventorA.year - (inventorB.passed - inventorB.year)
+  );
+});
+
+// console.log(howMuchLived);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+// const category = document.querySelector(".mw-category");
+// const links = [...category.querySelectorAll("a")]; // OR   Array.from(category.querySelector("a"))
+// const de = links
+//   .map(link => link.textContent)
+//   .filter(streetName => streetName.includes("de"));
+// console.log(de);
+
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const isSortLastName = people.sort(
+  (charA, charB) => charA.charAt(1) - charB.charAt(1)
+);
+// console.log(isSortLastName);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
+
 const data = [
   "car",
   "car",
@@ -95,3 +137,6 @@ const data = [
   "car",
   "truck"
 ];
+
+const eachOf = [...new Set(data)];
+console.log(eachOf);
