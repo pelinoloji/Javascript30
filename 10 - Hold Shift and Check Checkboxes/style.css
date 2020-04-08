@@ -21,7 +21,7 @@ html {
   border-bottom: 0;
 }
 
-input:checked + p {
+input:checked + label {
   background: #f9f9f9;
   text-decoration: line-through;
 }
@@ -30,7 +30,7 @@ input[type="checkbox"] {
   margin: 20px;
 }
 
-p {
+label {
   margin: 0;
   padding: 20px;
   transition: background 0.2s;
