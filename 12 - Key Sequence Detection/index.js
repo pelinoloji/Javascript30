@@ -7,7 +7,7 @@ window.addEventListener("keyup", (e) => {
   pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
   if (pressed.join("").includes(secretCode)) {
     console.log("HOORAY! 🎉");
-    cornify_add();
+    confetti.start();
   }
   console.log(pressed);
 });
