@@ -1,16 +1,12 @@
-const addItems = document
-  .querySelector(".add-items")
-  .addEventListener("submit", addItem);
-
+const addItems = document.querySelector(".add-items");
 const itemsList = document.querySelector(".plates");
-const items = [];
+const items = JSON.parse(localStorage.getItem("items")) || [];
 
 function addItem(e) {
   e.preventDefault();
   // console.log("ahoj");
   // console.log(this);
   const text = this.querySelector('[name="item"]').value;
-
   const item = {
     text,
     done: false,
@@ -19,9 +15,9 @@ function addItem(e) {
   // console.log(item);
   items.push(item);
   popularity(items, itemsList);
-  localStorage.setItem("items", items);
+  localStorage.setItem("items", JSON.stringify(items));
+  // console.log(localStorage.getItem("items"));
   this.reset();
-
   // console.log(items);
 }
 
@@ -38,3 +34,18 @@ function popularity(dishes = [], dishesList) {
     })
     .join("");
 }
+
+function toggleDone(e) {
+  if (!e.target.matches("input")) return;
+  console.log(e.target);
+  const el = e.target;
+  const index = el.dataset.index;
+  items[index].done = !items[index].done;
+  localStorage.setItem("items", JSON.stringify(items));
+  popularity(items, itemsList);
+}
+
+popularity(items, itemsList);
+
+addItems.addEventListener("submit", addItem);
+itemsList.addEventListener("click", toggleDone);
