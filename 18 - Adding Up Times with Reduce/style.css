@@ -1,0 +1,10 @@
+body {
+  background: url("https://i.imgur.com/sIrVUir.jpg") center center fixed;
+  background-size: cover;
+  display: flex;
+}
+
+.totalTime {
+  font-size: 1.5em;
+  color: darkmagenta;
+}
