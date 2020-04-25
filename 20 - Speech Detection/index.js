@@ -1,5 +1,4 @@
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
 const recognition = new SpeechRecognition();
 recognition.interimResults = true; // https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/interimResults
 
@@ -21,9 +20,22 @@ recognition.addEventListener('result', e => { //https: //developer.mozilla.org/e
     words.appendChild(p);
   }
 
-  console.log(transcript);
+  if (transcript.includes('hello')) {
+    document.querySelector('p').innerHTML = '👋';
+  }
+  // console.log(transcript);
+  if (transcript.includes('start again')) {
+    return refreshPage();
+  }
 })
 
+const btn = document.querySelector('.btn');
+
+function refreshPage() {
+  window.location.reload();
+}
+
 recognition.addEventListener('end', recognition.start)
+btn.addEventListener('click', refreshPage)
 
 recognition.start();
