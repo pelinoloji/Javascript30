@@ -52,6 +52,12 @@ nav {
   z-index: 1;
 }
 
+.fixed-nav nav {
+  position: fixed;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid red;
+}
+
 nav ul {
   margin: 0;
   padding: 0;
@@ -71,9 +77,13 @@ li.logo {
   max-width: 0;
   overflow: hidden;
   background: white;
-  transition: all .5s;
+  transition: all 5s;
   font-weight: 600;
   font-size: 30px;
+}
+
+.fixed-nav li.logo {
+  max-width: 500px;
 }
 
 li.logo a {
