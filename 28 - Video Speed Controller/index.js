@@ -6,7 +6,7 @@ function handleMove(e) {
   console.log(e);
   console.log(e.offsetX);
   const y = e.pageY - this.offsetTop;
-
+  console.log(this);
   const percent = y / this.offsetHeight;
   const min = 0.4;
   const max = 4;
